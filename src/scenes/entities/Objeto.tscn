@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7spek5jwafob"]
+
+[ext_resource type="Script" uid="uid://b86aiv2u14ttd" path="res://src/scripts/objeto.gd" id="1_o2dos"]
+[ext_resource type="Texture2D" uid="uid://ck02lubyuof85" path="res://_assets/sprites/midTileset.png" id="2_7hjvn"]
+[ext_resource type="AudioStream" uid="uid://dtot7nhx3rcs8" path="res://_assets/music/object_01.wav" id="3_7hjvn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6thab"]
+atlas = ExtResource("2_7hjvn")
+region = Rect2(1022.83, 247.667, 65.9999, 75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_scoyw"]
+size = Vector2(111, 108)
+
+[node name="Area2D" type="Area2D"]
+gravity = 2000.0
+script = ExtResource("1_o2dos")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.5, -5.5)
+scale = Vector2(1.64615, 1.58667)
+texture = SubResource("AtlasTexture_6thab")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_scoyw")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_7hjvn")
+volume_db = -2.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
