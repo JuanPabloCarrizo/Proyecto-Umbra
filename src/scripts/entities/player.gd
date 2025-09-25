@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 			randf_range(-shake, shake),
 			randf_range(-shake, shake)
 		)
-		shake = lerp(shake, 0.0, 4 * delta) # se va calmando
+		shake = lerp(shake, 0.0, 4 * delta) # aca es para que pierda el shake de a poco
 	else:
 		camera.offset = Vector2.ZERO
 
@@ -90,9 +90,7 @@ func _physics_process(delta: float) -> void:
 	if direction != 0:
 		animated_sprite_2d.flip_h = direction < 0
 	
-	
-	update_animation(on_floor, direction)
-	
+	update_animation(on_floor, direction)	
 	move_and_slide()
 
 

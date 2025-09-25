@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://6jb2tefed01e"]
+[gd_scene load_steps=17 format=4 uid="uid://6jb2tefed01e"]
 
 [ext_resource type="Script" uid="uid://jnbderwogf6b" path="res://src/scripts/classes/level.gd" id="1_krl7c"]
 [ext_resource type="Texture2D" uid="uid://ck02lubyuof85" path="res://_assets/sprites/midTileset.png" id="3_lo748"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cmeplvg6yvaib" path="res://src/scenes/entities/player.tscn" id="4_j0a6s"]
 [ext_resource type="AudioStream" uid="uid://b11g2w1x04ek4" path="res://_assets/music/ambient_03.ogg" id="5_yfpvf"]
 [ext_resource type="PackedScene" uid="uid://b7spek5jwafob" path="res://src/scenes/entities/Objeto.tscn" id="6_3ihjg"]
+[ext_resource type="PackedScene" uid="uid://j7uq3jrb7uwx" path="res://src/scenes/entities/enemy.tscn" id="7_naqav"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lo748"]
 texture = ExtResource("3_naqav")
@@ -1685,7 +1686,6 @@ metadata/_edit_vertical_guides_ = [-241.0, 4496.0, 4430.0, -179.0]
 
 [node name="Background" type="TileMapLayer" parent="TileMapsLayers"]
 scale = Vector2(0.9, 0.9)
-tile_map_data = PackedByteArray("AAAAAAEAAAABAAEAAAABAAEAAAADAAEAAAACAAEAAAABAAEAAAADAAEAAAACAAAAAAAEAAEAAAACAAAAAAAFAAEAAAADAAEAAAD//wEAAAABAAEAAAD//wAAAAABAAIAAAAAAAAAAAABAAIAAAABAAAAAAABAAIAAAACAAAAAAABAAIAAAADAAAAAAABAAIAAAAEAAAAAAABAAIAAAAFAAAAAAABAAIAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAD+////AAAAAAAAAAD9////AAAAAAAAAAD8////AAAAAAAAAAD7////AAAAAAAAAAD6////AAAAAAAAAAD5////AAAAAAAAAAD4////AAAAAAAAAAAGAAAAAAABAAIAAAAHAAAAAAABAAIAAAAIAAAAAAABAAIAAAAJAAAAAAABAAIAAAAKAAAAAAABAAIAAAALAAAAAAABAAIAAAAMAAAAAAABAAIAAAD4/wAAAAABAAIAAAD5/wAAAAABAAIAAAD6/wAAAAABAAIAAAD7/wAAAAABAAIAAAD8/wAAAAABAAIAAAD9/wAAAAABAAIAAAD+/wAAAAABAAIAAAD4/wEAAAABAAMAAAD5/wEAAAABAAMAAAD6/wEAAAABAAMAAAD7/wEAAAABAAEAAAD8/wEAAAABAAEAAAD9/wEAAAABAAMAAAD+/wEAAAABAAMAAAAJAAEAAAABAAEAAAAKAAEAAAADAAEAAAALAAEAAAABAAEAAAAHAAEAAAADAAEAAAD4/wIAAAAAAAAAAAD5/wIAAAAAAAAAAAD6/wIAAAAAAAAAAAD7/wIAAAAAAAAAAAD8/wIAAAAAAAAAAAD9/wIAAAAAAAAAAAD+/wIAAAAAAAAAAAAGAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAALAAIAAAAAAAAAAAAMAAIAAAAAAAAAAAAGAAEAAAABAAMAAAAIAAEAAAABAAMAAAAMAAEAAAABAAMAAAA=")
 tile_set = SubResource("TileSet_yfpvf")
 
 [node name="Sprite2D" type="Sprite2D" parent="TileMapsLayers/Background"]
@@ -1731,17 +1731,47 @@ parameters/looping = true
 [node name="Objetos" type="Node2D" parent="."]
 
 [node name="Objeto" parent="Objetos" instance=ExtResource("6_3ihjg")]
-position = Vector2(773, 15)
+position = Vector2(1630, 265)
 tipo = 1
+id = 1
 
 [node name="Objeto2" parent="Objetos" instance=ExtResource("6_3ihjg")]
-position = Vector2(2830, 266)
+position = Vector2(2024, 15)
 tipo = 2
+id = 2
 
 [node name="Objeto3" parent="Objetos" instance=ExtResource("6_3ihjg")]
-position = Vector2(2020, 5)
+position = Vector2(2801, 273)
 tipo = 1
+id = 3
 
 [node name="Objeto4" parent="Objetos" instance=ExtResource("6_3ihjg")]
-position = Vector2(3548, 266)
+position = Vector2(3824, 15)
 tipo = 3
+id = 4
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="enemy" parent="Enemies" instance=ExtResource("7_naqav")]
+position = Vector2(1393, 260)
+id = 1
+
+[node name="enemy6" parent="Enemies" instance=ExtResource("7_naqav")]
+position = Vector2(2716, 286)
+id = 6
+
+[node name="enemy5" parent="Enemies" instance=ExtResource("7_naqav")]
+position = Vector2(2881, 273)
+id = 5
+
+[node name="enemy4" parent="Enemies" instance=ExtResource("7_naqav")]
+position = Vector2(2120, 31)
+id = 4
+
+[node name="enemy3" parent="Enemies" instance=ExtResource("7_naqav")]
+position = Vector2(1921, 27)
+id = 3
+
+[node name="enemy2" parent="Enemies" instance=ExtResource("7_naqav")]
+position = Vector2(1501, 135)
+id = 2
