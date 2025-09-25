@@ -1,73 +1,50 @@
 extends CharacterBody2D
-
 class_name Enemy
 
-@export var speed: float = 150
-@export var activation_radius: float = 400.0  # Esto es para que persigan cuando está en radio
+@export var speed: float = 150.0
+@export var activation_radius: float = 400.0
 @export var id: int
-var player: Node2D = null
+
+var player: Node2D
 var is_active: bool = false
-
-# Esto es para que vuelva a custodiar al item
-@onready var objeto: Area2D = null
-
+var objeto: Area2D
 
 func _ready() -> void:
-	player = get_tree().get_nodes_in_group("player")[0]
-	var objetos = get_tree().get_nodes_in_group("objetos")
-	for o in objetos:
-		if o.id == 1 and id in[1,2]:
-			print("Entro en ready id 1 in 1 2")
-			objeto = o
-		elif o.id == 2 and id in [3,4]:
-			print("Entro en ready id 1 in 3 4 ")
-			objeto = o
-		elif o.id == 3 and id in [5,6]:
-			print("Entro en ready id 3 in  5 6 ")
-			objeto = o
+	player = get_tree().get_first_node_in_group("player")
+	
+	# asigna objeto según id
+	for o in get_tree().get_nodes_in_group("objetos"):
+		match [o.id, id]:
+			[1, 1], [1, 2]:
+				objeto = o
+			[2, 3], [2, 4]:
+				objeto = o
+			[3, 5], [3, 6]:
+				objeto = o
+	
+	if objeto:
+		print("Enemigo con id %s custodia objeto %s" % [id, objeto.id])
 
-@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
-	var objetos = get_tree().get_nodes_in_group("objetos")
-	if player == null:
+	if not player:
 		return
 	
-	# calcular distancia
-	var distance = position.distance_to(player.position)
+	var distance := position.distance_to(player.position)
+	is_active = LevelManager.frenzy_mode or distance <= activation_radius
 	
-	# activar si está dentro del radio
-	#if distance <= activation_radius:
-		#is_active = true
-	#else:
-		#is_active = false
-	if LevelManager.frenzy_mode == true:
-		is_active = true
-	else:
-		is_active = distance <= activation_radius
-	
-	# seguir al player si ya está activo
 	if is_active:
 		follow()
 	else:
 		back_to_position()
 
-func follow():
+func follow() -> void:
 	velocity = position.direction_to(player.position) * speed
 	move_and_slide()
 
-
-func back_to_position():
-	#if (objeto.id == 1) and id in [1,2,3]:
-		#velocity = position.direction_to(objeto.position) * speed
-		#move_and_slide()
-	#else:
-		#objeto.id == 3 and id in [4,5,6]
-		#velocity = position.direction_to(objeto.position) * speed
-		#move_and_slide()
-	if objeto != null:
+func back_to_position() -> void:
+	if objeto:
 		velocity = position.direction_to(objeto.position) * speed
 		move_and_slide()
-	
 
-func destroid():
+func destroid() -> void:
 	queue_free()
