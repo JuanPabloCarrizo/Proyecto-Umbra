@@ -1,15 +1,13 @@
 extends CharacterBody2D
 
 class_name Player
+
 @onready var sfx: AudioStreamPlayer = $AudioStreamPlayer
 @onready var camera: Camera2D = $Camera2D
-
-
 const SPEED = 300.0
 const JUMP_VELOCITY = -550.0
 const DASH_SPEED = 600.0 #Para que parezca que "vuela"
 const DASH_DURATION = 0.4
-
 var is_dashing := false
 var dash_timer := 0.0
 var can_double_jump := true
@@ -17,13 +15,12 @@ var shake: float = 0.0
 # Cuando implementemos penalizacion de velocidad por item
 # REF: mecanica-penalidad-01
 var speed: float = SPEED
-
-
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func _ready() -> void:
 	play_anim("idle")
+
 
 func _process(delta: float) -> void:
 	# Sacudida de cámara
@@ -40,10 +37,10 @@ func _process(delta: float) -> void:
 func start_shake(intensity: float) -> void:
 	shake = intensity
 
+
 # REF: mecanica-penalidad-01
 #func set_slow_motion(factor: float = 0.5) -> void:
 #	speed = SPEED * factor
-
 
 
 func _physics_process(delta: float) -> void:

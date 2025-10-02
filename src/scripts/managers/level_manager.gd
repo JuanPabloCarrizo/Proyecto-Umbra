@@ -4,7 +4,6 @@ extends Node
 var levels : Array[LevelData]
 var main_scene : Node2D = null
 var loaded_level : Level = null
-
 # Esto es para el modo Frenzy
 var frenzy_mode: bool = false
 

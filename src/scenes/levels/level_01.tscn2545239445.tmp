@@ -1754,24 +1754,42 @@ id = 4
 
 [node name="enemy" parent="Enemies" instance=ExtResource("7_naqav")]
 position = Vector2(1436, 269)
+speed = null
+jump_speed = null
+activation_radius = null
 id = 1
 
 [node name="enemy6" parent="Enemies" instance=ExtResource("7_naqav")]
 position = Vector2(2716, 286)
+speed = null
+jump_speed = null
+activation_radius = null
 id = 6
 
 [node name="enemy5" parent="Enemies" instance=ExtResource("7_naqav")]
 position = Vector2(2881, 273)
+speed = null
+jump_speed = null
+activation_radius = null
 id = 5
 
 [node name="enemy4" parent="Enemies" instance=ExtResource("7_naqav")]
 position = Vector2(2120, 31)
+speed = null
+jump_speed = null
+activation_radius = null
 id = 4
 
 [node name="enemy3" parent="Enemies" instance=ExtResource("7_naqav")]
 position = Vector2(1921, 27)
+speed = null
+jump_speed = null
+activation_radius = null
 id = 3
 
 [node name="enemy2" parent="Enemies" instance=ExtResource("7_naqav")]
 position = Vector2(1739, 268)
+speed = null
+jump_speed = null
+activation_radius = null
 id = 2
