@@ -176,4 +176,5 @@ func morir() -> void:
 	# y poner pause en false cuando se ponga siguiente
 	# y luego reiniciar escena.
 	#await get_tree().create_timer(1.5).timeout
+	#....
 	get_tree().reload_current_scene()
