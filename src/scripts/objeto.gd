@@ -29,3 +29,6 @@ func _on_body_entered(body: Node2D) -> void:
 		visible = false
 		#$CollisionShape2D.disabled = true
 		$CollisionShape2D.set_deferred("disabled",true)
+		
+	if body is Enemy:
+		pass
