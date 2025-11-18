@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://6jb2tefed01e"]
+[gd_scene load_steps=19 format=4 uid="uid://6jb2tefed01e"]
 
 [ext_resource type="Script" uid="uid://jnbderwogf6b" path="res://src/scripts/classes/level.gd" id="1_krl7c"]
 [ext_resource type="Texture2D" uid="uid://ck02lubyuof85" path="res://_assets/sprites/midTileset.png" id="3_lo748"]
@@ -7,6 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://b11g2w1x04ek4" path="res://_assets/music/ambient_03.ogg" id="5_yfpvf"]
 [ext_resource type="PackedScene" uid="uid://b7spek5jwafob" path="res://src/scenes/entities/Objeto.tscn" id="6_3ihjg"]
 [ext_resource type="PackedScene" uid="uid://j7uq3jrb7uwx" path="res://src/scenes/entities/enemy.tscn" id="7_naqav"]
+[ext_resource type="Script" uid="uid://db4eo0khihxhq" path="res://src/scripts/ui/ui_escencia.gd" id="8_lbvuf"]
+[ext_resource type="Texture2D" uid="uid://de2knibraij4r" path="res://icon.svg" id="8_lo748"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lo748"]
 texture = ExtResource("3_naqav")
@@ -1709,10 +1711,10 @@ tile_map_data = PackedByteArray("AAAKAA0AAwAOAAQAAAALAA0AAwAOAAQAAAAMAA0AAwAOAAQ
 tile_set = SubResource("TileSet_naqav")
 
 [node name="Door" type="StaticBody2D" parent="TileMapsLayers"]
-position = Vector2(3741, 247)
+position = Vector2(4133, 609)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapsLayers/Door"]
-position = Vector2(396, 357)
+position = Vector2(3, 3)
 shape = SubResource("CapsuleShape2D_3ihjg")
 
 [node name="Player" parent="." instance=ExtResource("4_j0a6s")]
@@ -1779,3 +1781,44 @@ id = 3
 [node name="enemy2" parent="Enemies" instance=ExtResource("7_naqav")]
 position = Vector2(1739, 268)
 id = 2
+
+[node name="UI Escencia" type="CanvasLayer" parent="."]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+script = ExtResource("8_lbvuf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI Escencia"]
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 888.0
+offset_bottom = 228.0
+
+[node name="escencia" type="TextureRect" parent="UI Escencia/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_lo748")
+stretch_mode = 1
+
+[node name="escencia2" type="TextureRect" parent="UI Escencia/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_lo748")
+stretch_mode = 1
+
+[node name="escencia3" type="TextureRect" parent="UI Escencia/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_lo748")
+stretch_mode = 1
+
+[node name="escencia4" type="TextureRect" parent="UI Escencia/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_lo748")
+stretch_mode = 1
+
+[node name="escencia5" type="TextureRect" parent="UI Escencia/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_lo748")
+stretch_mode = 1
+
+[node name="escencia6" type="TextureRect" parent="UI Escencia/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_lo748")
+stretch_mode = 1

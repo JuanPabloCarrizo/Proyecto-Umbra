@@ -16,11 +16,12 @@ var shake: float = 0.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-# Sistema de vida
-@export var vida_max: int = 9
+#REF Sistema de vida
+@export var vida_max: int = 6
 var vida: int = vida_max
 var vida_invencible: bool = false
 @export var tiempo_invencible: float = 1.2
+var muerto = false
 
 var en_hit: bool = false
 
@@ -124,11 +125,17 @@ func update_animation(on_floor: bool, direction: float) -> void:
 
 # REF sistema-de-vida
 func recibe_daño(cantidad: int) -> void:
+	if muerto:
+		return
 	if vida_invencible:
 		return
 
 	vida -= cantidad
 	print("PLAYER: Recibe daño!!! le queda: %d" % vida)
+	
+	# Actualizacmos el UI ESCENCIA
+	var hud = get_parent().get_node("UI Escencia")
+	hud.actualizar_escencia(vida)
 
 	var vel_backup = velocity
 	velocity = Vector2.ZERO
@@ -149,18 +156,24 @@ func recibe_daño(cantidad: int) -> void:
 	await get_tree().create_timer(tiempo_invencible).timeout
 	vida_invencible = false
 
-	if vida == 3:
-		print("PLAYER: le quedan 3 VIDA")
+	if vida == 1:
+		print("PLAYER: le queda 1 VIDA")
 		#sfx.stop()
 		sfx.stream = preload("res://_assets/music/player_low_life_01.wav")
 		#sfx.volume_db = 4
 		sfx.play()
 	elif vida == 0:
 		morir()
+		return
 
 
 func morir() -> void:
+	muerto = true
 	print("PLAYER; MUERREEEEEE")
 	set_physics_process(false)
-	await get_tree().create_timer(1.5).timeout
+	# Aca deberia hacer un get_tree().pause = true
+	# mostrar GAME OVER
+	# y poner pause en false cuando se ponga siguiente
+	# y luego reiniciar escena.
+	#await get_tree().create_timer(1.5).timeout
 	get_tree().reload_current_scene()
