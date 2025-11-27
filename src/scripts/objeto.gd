@@ -56,7 +56,7 @@ func farol_on_off() -> void:
 		if farol_on:
 			farol_on.visible = true
 			farol_light.visible = true
-		#print("FAROL ON")
+		print("FAROL ON")
 		#Esto es para que elimine los enemigos que ya están en el area al activar el farol
 		for enemy in enemies_in_range:
 			if enemy and enemy.is_inside_tree():
@@ -66,7 +66,7 @@ func farol_on_off() -> void:
 		if farol_on:
 			farol_on.visible = false
 			farol_light.visible = false
-		#print("FAROL OFF")
+		print("FAROL OFF")
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:

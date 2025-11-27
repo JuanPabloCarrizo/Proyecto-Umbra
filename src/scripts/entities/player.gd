@@ -131,6 +131,10 @@ func recibe_daño(cantidad: int) -> void:
 		return
 
 	vida -= cantidad
+	if vida <= 0:
+		vida = 0
+		morir()
+		return
 	print("PLAYER: Recibe daño!!! le queda: %d" % vida)
 	
 	# Actualizacmos el UI ESCENCIA
@@ -169,12 +173,14 @@ func recibe_daño(cantidad: int) -> void:
 
 func morir() -> void:
 	muerto = true
+	LevelManager.frenzy_mode = false
 	print("PLAYER; MUERREEEEEE")
+	$CollisionShape2D.set_deferred("disabled",true)
 	set_physics_process(false)
 	# Aca deberia hacer un get_tree().pause = true
 	# mostrar GAME OVER
 	# y poner pause en false cuando se ponga siguiente
 	# y luego reiniciar escena.
-	#await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(1.5).timeout
 	#....
 	get_tree().reload_current_scene()
