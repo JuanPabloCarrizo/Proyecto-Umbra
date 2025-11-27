@@ -9,7 +9,7 @@ atlas = ExtResource("2_7hjvn")
 region = Rect2(1022.83, 247.667, 65.9999, 75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_scoyw"]
-size = Vector2(111, 108)
+size = Vector2(38, 147)
 
 [node name="Area2D" type="Area2D" groups=["objetos"]]
 gravity = 2000.0
