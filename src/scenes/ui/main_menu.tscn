@@ -5,14 +5,14 @@
 [ext_resource type="AudioStream" uid="uid://osh0xi0gb2f7" path="res://_assets/music/menu_01.ogg" id="3_ttmq8"]
 [ext_resource type="AudioStream" uid="uid://grd3gktbg380" path="res://_assets/music/menu_click_01.wav" id="4_f5lm1"]
 
-[sub_resource type="SystemFont" id="SystemFont_rwhmm"]
+[sub_resource type="SystemFont" id="SystemFont_f5lm1"]
 font_names = PackedStringArray("Century Gothic")
 font_weight = 800
 subpixel_positioning = 0
 oversampling = 3.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_loxbe"]
-font = SubResource("SystemFont_rwhmm")
+font = SubResource("SystemFont_f5lm1")
 font_size = 50
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
@@ -24,7 +24,7 @@ subpixel_positioning = 0
 oversampling = 2.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_f5lm1"]
-font = SubResource("SystemFont_rwhmm")
+font = SubResource("SystemFont_f5lm1")
 font_size = 30
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)

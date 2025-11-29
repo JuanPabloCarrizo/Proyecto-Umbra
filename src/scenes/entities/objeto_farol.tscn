@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cppe20qmv4vps" path="res://_assets/img/light_texture.png" id="4_yf0fu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mdgun"]
-radius = 176.026
+radius = 151.03
 
 [node name="Area2D" instance=ExtResource("1_mdgun")]
 

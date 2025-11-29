@@ -1,18 +1,17 @@
-[gd_scene load_steps=23 format=4 uid="uid://6jb2tefed01e"]
+[gd_scene load_steps=22 format=4 uid="uid://6jb2tefed01e"]
 
 [ext_resource type="Script" uid="uid://jnbderwogf6b" path="res://src/scripts/classes/level.gd" id="1_krl7c"]
 [ext_resource type="Texture2D" uid="uid://ck02lubyuof85" path="res://_assets/sprites/midTileset.png" id="3_lo748"]
 [ext_resource type="Texture2D" uid="uid://ehxxolxbk1rc" path="res://_assets/sprites/Fondo.png" id="3_naqav"]
 [ext_resource type="Texture2D" uid="uid://c6s84ydsbsq7v" path="res://_assets/sprites/spritesheet-tiles-default.png" id="4_4p46a"]
 [ext_resource type="PackedScene" uid="uid://cmeplvg6yvaib" path="res://src/scenes/entities/player.tscn" id="4_j0a6s"]
-[ext_resource type="Script" uid="uid://bstg8ofqtcomk" path="res://src/scripts/classes/door.gd" id="4_n0kxv"]
 [ext_resource type="AudioStream" uid="uid://b11g2w1x04ek4" path="res://_assets/music/ambient_03.ogg" id="5_yfpvf"]
 [ext_resource type="PackedScene" uid="uid://b7spek5jwafob" path="res://src/scenes/entities/Objeto.tscn" id="6_3ihjg"]
 [ext_resource type="PackedScene" uid="uid://bk5c5t38sgu56" path="res://src/scenes/entities/objeto_farol.tscn" id="7_8bfcq"]
 [ext_resource type="PackedScene" uid="uid://j7uq3jrb7uwx" path="res://src/scenes/entities/enemy.tscn" id="7_naqav"]
 [ext_resource type="Script" uid="uid://db4eo0khihxhq" path="res://src/scripts/ui/ui_escencia.gd" id="8_lbvuf"]
+[ext_resource type="Texture2D" uid="uid://de2knibraij4r" path="res://icon.svg" id="8_lo748"]
 [ext_resource type="PackedScene" uid="uid://bx3jmpqjxw4s4" path="res://src/scenes/entities/objeto_manija.tscn" id="9_xdp4r"]
-[ext_resource type="Texture2D" uid="uid://dseyi7cex1p51" path="res://_assets/sprites/life.PNG" id="13_n0kxv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lo748"]
 texture = ExtResource("3_naqav")
@@ -1714,9 +1713,8 @@ position = Vector2(1615, -3)
 tile_map_data = PackedByteArray("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")
 tile_set = SubResource("TileSet_naqav")
 
-[node name="Door" type="Area2D" parent="TileMapsLayers"]
+[node name="Door" type="StaticBody2D" parent="TileMapsLayers"]
 position = Vector2(4133, 609)
-script = ExtResource("4_n0kxv")
 
 [node name="Sprite2D" type="Sprite2D" parent="TileMapsLayers/Door"]
 modulate = Color(0.542835, 0.973449, 1, 0.443137)
@@ -1772,14 +1770,16 @@ id = 4
 [node name="farol" parent="Objetos" instance=ExtResource("7_8bfcq")]
 position = Vector2(475, 577)
 tipo = 4
+id = 0
 
 [node name="manija" parent="Objetos" instance=ExtResource("9_xdp4r")]
-position = Vector2(3817, 49)
+position = Vector2(407, 235)
+id = 0
 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="enemy" parent="Enemies" instance=ExtResource("7_naqav")]
-position = Vector2(908, 212)
+position = Vector2(1436, 269)
 id = 1
 
 [node name="enemy6" parent="Enemies" instance=ExtResource("7_naqav")]
@@ -1810,39 +1810,35 @@ script = ExtResource("8_lbvuf")
 [node name="HBoxContainer" type="HBoxContainer" parent="UI Escencia"]
 offset_left = 100.0
 offset_top = 100.0
-offset_right = 485.0
-offset_bottom = 152.0
-scale = Vector2(1.5, 1.5)
-theme_override_constants/separation = 10
+offset_right = 888.0
+offset_bottom = 228.0
 
 [node name="escencia" type="TextureRect" parent="UI Escencia/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("13_n0kxv")
+texture = ExtResource("8_lo748")
 stretch_mode = 1
 
 [node name="escencia2" type="TextureRect" parent="UI Escencia/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("13_n0kxv")
+texture = ExtResource("8_lo748")
 stretch_mode = 1
 
 [node name="escencia3" type="TextureRect" parent="UI Escencia/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("13_n0kxv")
+texture = ExtResource("8_lo748")
 stretch_mode = 1
 
 [node name="escencia4" type="TextureRect" parent="UI Escencia/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("13_n0kxv")
+texture = ExtResource("8_lo748")
 stretch_mode = 1
 
 [node name="escencia5" type="TextureRect" parent="UI Escencia/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("13_n0kxv")
+texture = ExtResource("8_lo748")
 stretch_mode = 1
 
 [node name="escencia6" type="TextureRect" parent="UI Escencia/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("13_n0kxv")
+texture = ExtResource("8_lo748")
 stretch_mode = 1
-
-[connection signal="body_entered" from="TileMapsLayers/Door" to="TileMapsLayers/Door" method="_on_body_entered"]

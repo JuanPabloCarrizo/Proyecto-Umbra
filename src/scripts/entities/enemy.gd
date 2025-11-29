@@ -6,31 +6,24 @@ class_name Enemy
 @export var id: int
 @export var cooldown_golpe: float = 1.0       
 @export var fuerza_retroceso: float = 250.0   
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var player: Node2D
 var is_active: bool = false
 var objeto: Area2D
 var initial_position: Vector2
-
 var puede_golpear: bool = true          
 var velocidad_temporal: Vector2 = Vector2.ZERO
 var tiempo_retroceso: float = 0.0       
+var is_dying = false # Esto es si el enemigo está muerto, lo detengo y hago anim("hit")
+var player_is_dead = false # Esto es para la signal de player muerto
 
 
 func _ready() -> void:
 	initial_position = global_position
 	player = get_tree().get_first_node_in_group("player")
-
-	# Asignación de objeto según id
-	for o in get_tree().get_nodes_in_group("objetos"):
-		match [o.id, id]:
-			[1, 1], [1, 2]:
-				objeto = o
-			[2, 3], [2, 4]:
-				objeto = o
-			[3, 5], [3, 6]:
-				objeto = o
-
+	player.player_dead.connect(_on_player_dead)
+	
 
 func _physics_process(delta: float) -> void:
 	if not player:
@@ -44,9 +37,9 @@ func _physics_process(delta: float) -> void:
 		tiempo_retroceso -= delta
 	else:
 		if is_active:
-			follow_logic()
+			follow()
 		else:
-			back_to_position_logic()
+			back_to_position()
 
 	move_and_slide()
 
@@ -59,11 +52,15 @@ func _physics_process(delta: float) -> void:
 			ataque(collider)
 
 
-func follow_logic() -> void:
+func follow() -> void:
+	# Si el player murio o el enemigo está muriendo
+	if player_is_dead or is_dying:
+		velocity = Vector2.ZERO
+		return
 	velocity = position.direction_to(player.position) * speed
 
 
-func back_to_position_logic() -> void:
+func back_to_position() -> void:
 	var target_position = initial_position
 	velocity = position.direction_to(target_position) * speed
 
@@ -87,6 +84,22 @@ func start_cooldown() -> void:
 	await get_tree().create_timer(cooldown_golpe).timeout
 	puede_golpear = true
 
+func play_anim(name: String) -> void:
+	if animated_sprite_2d.animation != name:
+		animated_sprite_2d.play(name)
 
+
+func _on_player_dead():
+	player_is_dead = true
+	velocity = Vector2.ZERO
+	play_anim("idle")
+
+		
 func destroid() -> void:
+	if is_dying:
+		return
+	
+	is_dying = true
+	play_anim("hit")
+	await get_tree().create_timer(0.5).timeout
 	queue_free()

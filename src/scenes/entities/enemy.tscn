@@ -1,7 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://j7uq3jrb7uwx"]
+[gd_scene load_steps=9 format=3 uid="uid://j7uq3jrb7uwx"]
 
 [ext_resource type="Script" uid="uid://bk51wulhucmwa" path="res://src/scripts/entities/enemy.gd" id="1_qi3eb"]
 [ext_resource type="Texture2D" uid="uid://d4k61hmxeh1o1" path="res://_assets/sprites/idle.png" id="2_ktdi6"]
+[ext_resource type="Texture2D" uid="uid://ctbixw1qobn6o" path="res://_assets/sprites/jump.png" id="3_ktdi6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfuw5"]
+atlas = ExtResource("3_ktdi6")
+region = Rect2(512, 512, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2tabm"]
 atlas = ExtResource("2_ktdi6")
@@ -14,6 +19,14 @@ region = Rect2(409, 0, 409, 512)
 [sub_resource type="SpriteFrames" id="SpriteFrames_kfuw5"]
 animations = [{
 "frames": [{
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_kfuw5")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2tabm")
 }, {
@@ -21,7 +34,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ab5mc")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -36,8 +49,7 @@ script = ExtResource("1_qi3eb")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_kfuw5")
-frame = 1
-frame_progress = 0.282209
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_dkt1s")
