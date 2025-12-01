@@ -14,6 +14,10 @@ var door_active = false
 # REF esto es para cargar la pantalla final
 var final_scree_scene := preload("res://src/scenes/ui/final_screen.tscn")
 var tipo_final: String = ""
+# REF musica-de-peligro
+var enemigos_totales := 0
+var enemigos_eliminados := 0
+
 
 
 func unload_level() -> void:
@@ -61,6 +65,8 @@ func load_level(level_id : int) -> void:
 
 	# Ref: contador-de-recuerdos
 	contar_recuerdos()
+	# REF: musica-de-peligro
+	contar_enemigos()
 	print("LevelManager: nivel instanciado OK")
 
 
@@ -105,13 +111,25 @@ func finalizar_juego() -> void:
 		cargar_final("final_bueno")
 
 func cargar_final(tipo: String):
-	#print("CARGAR FINAL >>> antes de pausar:", get_tree().paused)
-	#var pantalla = final_scree_scene.instantiate()
-	#get_tree().current_scene.add_child(pantalla)
-	#pantalla.mostrar_final(tipo_final)
 	get_tree().paused = false
-	#var pantalla = final_scree_scene.instantiate()
-	#get_tree().root.add_child(pantalla)
 	LevelManager.tipo_final = tipo
 	get_tree().change_scene_to_file("res://src/scenes/ui/final_screen.tscn")
-	#pantalla.mostrar_final(tipo_final)
+	
+
+#REF musica-de-peligro
+func contar_enemigos() -> void:
+	enemigos_totales = 0
+	
+	for e in get_tree().get_nodes_in_group("enemies"):
+		print(e.id)
+		if e.id == 1:
+			enemigos_totales += 1
+	
+	print("Enemigos totales en mapa: ", enemigos_totales)
+	
+
+#REF musica-de-peligro
+func add_eliminated_enemy():
+	enemigos_eliminados += 1
+	print("Eliminado:", enemigos_eliminados, "/", enemigos_totales)
+	

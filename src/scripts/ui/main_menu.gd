@@ -11,6 +11,8 @@ class_name MainMenu
 func _ready() -> void:
 	menu_container.visible = false
 	_mostrar_menu_container()
+	#REF audio-manager
+	AudioManager.play_menu()
 	#Para el hover de los botones
 	for b in menu_buttons:
 		if b is Button:
@@ -29,6 +31,7 @@ func _sfx_hover_button() -> void:
 func _on_play_button_pressed() -> void:
 	sfx.play()
 	music.stop()
+	AudioManager.play_level()
 	LevelManager.load_level(1)
 	deactivate()
 

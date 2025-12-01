@@ -9,5 +9,5 @@ var level_data : LevelData
 
 
 func _ready() -> void:
-	audio.play()
+	#audio.play()
 	level_data = LevelManager.get_level_by_id(level_id)

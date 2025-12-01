@@ -1,0 +1,22 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhgpxqlqfabeg"]
+
+[ext_resource type="Script" uid="uid://b50sjb3xv0juo" path="res://src/scripts/managers/audio_manager.gd" id="1_21dx3"]
+[ext_resource type="AudioStream" uid="uid://osh0xi0gb2f7" path="res://_assets/music/menu_01.ogg" id="2_yifg4"]
+[ext_resource type="AudioStream" uid="uid://b11g2w1x04ek4" path="res://_assets/music/ambient_03.ogg" id="3_wj122"]
+[ext_resource type="AudioStream" uid="uid://ch85sik5tl10b" path="res://_assets/music/frenzy.ogg" id="4_wj122"]
+[ext_resource type="AudioStream" uid="uid://bl6qv201866nq" path="res://_assets/music/final_malo.ogg" id="5_hwcw7"]
+[ext_resource type="AudioStream" uid="uid://2yn6lotlhg56" path="res://_assets/music/final_medio.ogg" id="6_pllqt"]
+[ext_resource type="AudioStream" uid="uid://dbtnx57bueal2" path="res://_assets/music/final_feliz.ogg" id="7_vnbxm"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_21dx3")
+menu_music = ExtResource("2_yifg4")
+level_music = ExtResource("3_wj122")
+frenzy_music = ExtResource("4_wj122")
+ending_bad = ExtResource("5_hwcw7")
+ending_mid = ExtResource("6_pllqt")
+ending_good = ExtResource("7_vnbxm")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+
+[node name="MusicFrenzy" type="AudioStreamPlayer" parent="."]

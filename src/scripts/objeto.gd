@@ -15,6 +15,7 @@ var manija_bool = false
 @onready var puerta: Sprite2D = $"../../TileMapsLayers/Door/Sprite2D"
 var farol: bool = false # Estado inicial del farol apagado
 var enemies_in_range: Array=[]
+@onready var grito: AudioStreamPlayer2D = $grito
 
 
 # REF: sistema-farol-enemigo
@@ -22,6 +23,7 @@ func _ready() -> void:
 	# Conectar hitbox opcionalmente (solo si existe)
 	if hitbox:
 		hitbox.body_entered.connect(_on_hitbox_body_entered)
+		hitbox.body_exited.connect(_on_hitbox_body_exited)
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -42,6 +44,8 @@ func _on_body_entered(body: Node2D) -> void:
 			3: # Frenzy Mode ON
 				body.start_shake(60.0)
 				LevelManager.frenzy_mode = true
+				grito.play()
+				frenzy_mode()
 
 			4: # Farol On/Off
 				farol_on_off()
@@ -77,6 +81,7 @@ func farol_on_off() -> void:
 
 # REF: sistema-farol-enemigo
 func _on_hitbox_body_entered(body: Node2D) -> void:
+	
 	#esto es para que elimine los enemigos que entran en el area
 	if body is Enemy:
 		#print("Enemigo detectado. Farol =", farol)
@@ -85,6 +90,10 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		if farol:  # Solo destruye si el farol está encendido
 			body.destroid()
 
+
+func _on_hitbox_body_exited(body: Node2D) -> void:
+	if body is Enemy:
+		enemies_in_range.erase(body)
 
 # REF contador-de-recuerdos y manija-on-off
 func manija_on_off()-> void:
@@ -100,3 +109,10 @@ func manija_on_off()-> void:
 		manija_bool = false
 		puerta.visible = true
 		LevelManager.door_active = false
+		
+
+# REF musica-de-peligro
+func frenzy_mode() -> void:
+	if LevelManager.enemigos_eliminados < LevelManager.enemigos_totales:
+		LevelManager.frenzy_mode = true
+		AudioManager.play_frenzy() 

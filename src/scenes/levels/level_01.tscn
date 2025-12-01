@@ -1679,8 +1679,8 @@ physics_layer_0/collision_layer = 1
 sources/3 = SubResource("TileSetAtlasSource_naqav")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ihjg"]
-radius = 47.0
-height = 182.0
+radius = 11.0
+height = 130.0
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_krl7c")
@@ -1727,7 +1727,7 @@ region_enabled = true
 region_rect = Rect2(962.123, 130.883, 60.009, 125.62)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapsLayers/Door"]
-position = Vector2(1, -1)
+position = Vector2(23, -1)
 shape = SubResource("CapsuleShape2D_3ihjg")
 
 [node name="Player" parent="." instance=ExtResource("4_j0a6s")]
@@ -1745,62 +1745,73 @@ parameters/looping = true
 [node name="Objetos" type="Node2D" parent="."]
 
 [node name="recuerdo1" parent="Objetos" instance=ExtResource("6_3ihjg")]
-position = Vector2(1630, 265)
+position = Vector2(1621, 284)
+scale = Vector2(0.7, 0.7)
 tipo = 1
 id = 1
 
 [node name="recuerdo5" parent="Objetos" instance=ExtResource("6_3ihjg")]
-position = Vector2(732, 8)
+position = Vector2(739, 29)
+scale = Vector2(0.7, 0.7)
 tipo = 1
 id = 5
 
 [node name="recuerdo2" parent="Objetos" instance=ExtResource("6_3ihjg")]
 position = Vector2(2024, 15)
+scale = Vector2(0.8, 0.8)
 tipo = 1
 id = 2
 
 [node name="recuerdo3" parent="Objetos" instance=ExtResource("6_3ihjg")]
-position = Vector2(2801, 273)
+position = Vector2(3037, 27)
+scale = Vector2(0.7, 0.7)
 tipo = 1
 id = 3
 
 [node name="frenzy" parent="Objetos" instance=ExtResource("6_3ihjg")]
-position = Vector2(683, 742)
+modulate = Color(1, 0, 0.188235, 0.470588)
+position = Vector2(2214, 285)
+scale = Vector2(0.7, 0.7)
 tipo = 3
 id = 4
 
 [node name="farol" parent="Objetos" instance=ExtResource("7_8bfcq")]
-position = Vector2(475, 577)
+position = Vector2(1127, 243)
 tipo = 4
 
 [node name="manija" parent="Objetos" instance=ExtResource("9_xdp4r")]
-position = Vector2(3817, 49)
+position = Vector2(3679, 724)
 
 [node name="Enemies" type="Node2D" parent="."]
+modulate = Color(0.615686, 0.478431, 0.658824, 0.94902)
 
 [node name="enemy" parent="Enemies" instance=ExtResource("7_naqav")]
 position = Vector2(908, 212)
 id = 1
 
 [node name="enemy6" parent="Enemies" instance=ExtResource("7_naqav")]
-position = Vector2(2716, 286)
-id = 6
+position = Vector2(2392, 655)
+id = 1
+
+[node name="enemy7" parent="Enemies" instance=ExtResource("7_naqav")]
+position = Vector2(3783, 28)
+id = 1
 
 [node name="enemy5" parent="Enemies" instance=ExtResource("7_naqav")]
-position = Vector2(2881, 273)
-id = 5
+position = Vector2(2956, 30)
+id = 1
 
 [node name="enemy4" parent="Enemies" instance=ExtResource("7_naqav")]
 position = Vector2(2120, 31)
-id = 4
+id = 1
 
 [node name="enemy3" parent="Enemies" instance=ExtResource("7_naqav")]
 position = Vector2(1921, 27)
-id = 3
+id = 1
 
 [node name="enemy2" parent="Enemies" instance=ExtResource("7_naqav")]
-position = Vector2(1739, 268)
-id = 2
+position = Vector2(1296, 273)
+id = 1
 
 [node name="UI Escencia" type="CanvasLayer" parent="."]
 scale = Vector2(0.5, 0.5)

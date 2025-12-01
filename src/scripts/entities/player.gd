@@ -5,19 +5,16 @@ class_name Player
 @onready var sfx_low_life: AudioStreamPlayer2D = $LowLife
 @onready var camera: Camera2D = $Camera2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var dead: AudioStreamPlayer2D = $Dead
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -550.0
 const DASH_SPEED = 600.0
 const DASH_DURATION = 0.4
-
 var is_dashing := false
 var dash_timer := 0.0
 var can_double_jump := true
 var shake: float = 0.0
-
-
-
 #REF Sistema de vida
 @export var vida_max: int = 6
 var vida: int = vida_max
@@ -26,7 +23,8 @@ var vida_invencible: bool = false
 var muerto = false
 var en_hit: bool = false
 signal player_dead #esto es para que los enemigos dejen de perseguir
-
+@export var dash_cooldown: float = 2.5
+var can_dash: bool = true
 
 
 func _ready() -> void:
@@ -53,7 +51,7 @@ func _physics_process(delta: float) -> void:
 	var on_floor := is_on_floor()
 	var direction := Input.get_axis("move_left", "move_right")
 	
-	if Input.is_action_just_pressed("dash") and not is_dashing:
+	if Input.is_action_just_pressed("dash") and not is_dashing and can_dash:
 		start_dash(direction)
 	
 	if is_dashing:
@@ -97,9 +95,9 @@ func _physics_process(delta: float) -> void:
 
 
 func start_dash(direction: float) -> void:
-	if direction == 0:
+	if not can_dash or direction == 0:
 		return
-	
+	can_dash = false
 	is_dashing = true
 	dash_timer = DASH_DURATION
 	velocity.x = direction * DASH_SPEED
@@ -107,6 +105,9 @@ func start_dash(direction: float) -> void:
 	sfx.stream = preload("res://_assets/music/player_dash_01.wav")
 	sfx.play()
 	play_anim("dash")
+	
+	await get_tree().create_timer(dash_cooldown).timeout
+	can_dash = true
 
 
 func play_anim(name: String) -> void:
@@ -125,51 +126,6 @@ func update_animation(on_floor: bool, direction: float) -> void:
 		play_anim("idle")
 
 
-# REF sistema-de-vida
-#func recibe_daño(cantidad: int) -> void:
-	#if muerto:
-		#return
-	#if vida_invencible:
-		#return
-#
-	#vida -= cantidad
-	#
-		## Actualizacmos el UI ESCENCIA
-	#var hud = get_parent().get_node("UI Escencia")
-	#hud.actualizar_escencia(vida)
-	#
-	#if vida <= 0:
-		#vida = 0
-		#morir()
-		#return
-#
-	#var vel_backup = velocity
-	#velocity = Vector2.ZERO
-	#en_hit = true
-#
-	#start_shake(5)
-	##sfx.stop()
-	#sfx.stream = preload("res://_assets/music/player_hit_01.wav")
-	#sfx.play()
-	#play_anim("hit")
-#
-	#await get_tree().create_timer(0.2).timeout
-	#en_hit = false
-#
-	#velocity = vel_backup
-#
-	#vida_invencible = true
-	#await get_tree().create_timer(tiempo_invencible).timeout
-	#vida_invencible = false
-#
-	#if vida == 1:
-		#print("PLAYER: le queda 1 VIDA")
-		##sfx.stream = preload("res://_assets/music/player_low_life_01.wav")
-		#sfx_low_life.play()
-	#elif vida == 0:
-		#morir()
-		#return
-
 func recibe_daño(cantidad: int) -> void:
 	if muerto or vida_invencible:
 		return
@@ -181,8 +137,8 @@ func recibe_daño(cantidad: int) -> void:
 	hud.actualizar_escencia(vida)
 
 	# Low life suena INMEDIATO
-	if vida == 1:
-		print("PLAYER: le queda 1 VIDA")
+	if vida == 2:
+		print("PLAYER: le queda 2 VIDA")
 		sfx_low_life.play()
 
 	if vida <= 0:
@@ -213,6 +169,7 @@ func morir() -> void:
 	muerto = true
 	emit_signal("player_dead")
 	LevelManager.frenzy_mode = false
+	dead.play()
 	play_anim("hit") #cambiarla por ("morir")	
 	$CollisionShape2D.set_deferred("disabled",true)
 	set_physics_process(false)

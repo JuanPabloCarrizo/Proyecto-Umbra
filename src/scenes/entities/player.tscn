@@ -1,10 +1,11 @@
-[gd_scene load_steps=36 format=3 uid="uid://cmeplvg6yvaib"]
+[gd_scene load_steps=37 format=3 uid="uid://cmeplvg6yvaib"]
 
 [ext_resource type="Script" uid="uid://ci06txf31dnw8" path="res://src/scripts/entities/player.gd" id="1_rds41"]
 [ext_resource type="Texture2D" uid="uid://d4k61hmxeh1o1" path="res://_assets/sprites/idle.png" id="3_pmhx6"]
 [ext_resource type="Texture2D" uid="uid://ctbixw1qobn6o" path="res://_assets/sprites/jump.png" id="4_ij1qy"]
 [ext_resource type="AudioStream" uid="uid://ceoapkt2dyg0g" path="res://_assets/music/player_low_life_01.wav" id="5_ij1qy"]
 [ext_resource type="Texture2D" uid="uid://dxg4vk61gg4rq" path="res://_assets/sprites/walk.png" id="5_lvvd8"]
+[ext_resource type="AudioStream" uid="uid://qsp0q05lfee1" path="res://_assets/music/menu_click_quit.wav" id="6_lvvd8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvvd8"]
 atlas = ExtResource("3_pmhx6")
@@ -235,7 +236,9 @@ size = Vector2(29, 87)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 3
+collision_mask = 17
 script = ExtResource("1_rds41")
+dash_cooldown = 1.5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-4, 20)
@@ -259,4 +262,11 @@ volume_db = -10.0
 
 [node name="LowLife" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_ij1qy")
-volume_db = 3.0
+volume_db = -2.0
+bus = &"sfx"
+
+[node name="Dead" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_lvvd8")
+volume_db = 4.0
+pitch_scale = 0.8
+bus = &"sfx"

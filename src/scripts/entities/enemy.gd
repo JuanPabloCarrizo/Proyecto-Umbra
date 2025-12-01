@@ -7,6 +7,7 @@ class_name Enemy
 @export var cooldown_golpe: float = 1.0       
 @export var fuerza_retroceso: float = 250.0   
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var player: Node2D
 var is_active: bool = false
@@ -28,7 +29,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not player:
 		return
-	
+
+
 	var distance := position.distance_to(player.position)
 	is_active = LevelManager.frenzy_mode or distance <= activation_radius
 	
@@ -98,8 +100,14 @@ func _on_player_dead():
 func destroid() -> void:
 	if is_dying:
 		return
-	
+
+	# REF: musica-de-peligro
+	player.start_shake(10)
+	LevelManager.add_eliminated_enemy() 
 	is_dying = true
 	play_anim("hit")
+	sfx.play()
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
+	if LevelManager.enemigos_eliminados == LevelManager.enemigos_totales:
+		AudioManager.play_level()  # 🎵 vuelve música original

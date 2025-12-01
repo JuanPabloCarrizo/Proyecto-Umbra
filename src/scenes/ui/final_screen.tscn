@@ -2,15 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c7ulxk7tyav7j" path="res://src/scripts/ui/final_screen.gd" id="1_dmslk"]
 [ext_resource type="AudioStream" uid="uid://grd3gktbg380" path="res://_assets/music/menu_click_01.wav" id="1_x67fk"]
-[ext_resource type="AudioStream" uid="uid://osh0xi0gb2f7" path="res://_assets/music/menu_01.ogg" id="3_ptekf"]
-
-[sub_resource type="Gradient" id="Gradient_dmslk"]
-offsets = PackedFloat32Array(0.226351, 0.72973)
-colors = PackedColorArray(1, 0.341176, 1, 0.231373, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ptekf"]
-gradient = SubResource("Gradient_dmslk")
-fill_to = Vector2(0.65812, 0.794872)
+[ext_resource type="Texture2D" uid="uid://cg4ohw7vyjy20" path="res://_assets/img/fondo_umbra1.png" id="2_6bokh"]
+[ext_resource type="Texture2D" uid="uid://ksjfcvi0uas7" path="res://_assets/img/fondo_umbra2.png" id="2_ptekf"]
+[ext_resource type="Texture2D" uid="uid://mdx5g8cjja1b" path="res://_assets/img/fondo_umbra3.png" id="4_cdrne"]
 
 [sub_resource type="SystemFont" id="SystemFont_ptekf"]
 font_weight = 300
@@ -143,12 +137,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dmslk")
+img_final_malo = ExtResource("2_6bokh")
+img_final_medio = ExtResource("2_ptekf")
+img_final_bueno = ExtResource("4_cdrne")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 1918.0
 offset_bottom = 1080.0
-texture = SubResource("GradientTexture2D_ptekf")
+expand_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
 layout_mode = 1
@@ -202,28 +199,18 @@ layout_mode = 2
 layout_mode = 0
 offset_left = 471.0
 offset_top = 356.0
-offset_right = 1478.0
-offset_bottom = 530.0
+offset_right = 1426.0
+offset_bottom = 792.0
 theme_override_fonts/font = SubResource("SystemFont_6bokh")
 theme_override_font_sizes/font_size = 42
 label_settings = SubResource("LabelSettings_dmslk")
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 uppercase = true
 
 [node name="sfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_x67fk")
-volume_db = 4.0
-
-[node name="final_malo" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_ptekf")
-volume_db = 4.0
-
-[node name="final_medio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_ptekf")
-volume_db = 4.0
-
-[node name="final_bueno" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_ptekf")
 volume_db = 4.0
 
 [connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

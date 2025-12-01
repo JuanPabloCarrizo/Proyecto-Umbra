@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://j7uq3jrb7uwx"]
+[gd_scene load_steps=10 format=3 uid="uid://j7uq3jrb7uwx"]
 
 [ext_resource type="Script" uid="uid://bk51wulhucmwa" path="res://src/scripts/entities/enemy.gd" id="1_qi3eb"]
 [ext_resource type="Texture2D" uid="uid://d4k61hmxeh1o1" path="res://_assets/sprites/idle.png" id="2_ktdi6"]
 [ext_resource type="Texture2D" uid="uid://ctbixw1qobn6o" path="res://_assets/sprites/jump.png" id="3_ktdi6"]
+[ext_resource type="AudioStream" uid="uid://blqfv6pwnsh10" path="res://_assets/music/player_hit_01.wav" id="4_2tabm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kfuw5"]
 atlas = ExtResource("3_ktdi6")
@@ -42,9 +43,12 @@ animations = [{
 radius = 11.0
 height = 58.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
-collision_mask = 6
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 16
+collision_mask = 22
 script = ExtResource("1_qi3eb")
+activation_radius = 250.0
+fuerza_retroceso = 230.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
@@ -53,3 +57,8 @@ animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_dkt1s")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_2tabm")
+pitch_scale = 2.5
+bus = &"sfx"
