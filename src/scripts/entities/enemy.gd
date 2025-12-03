@@ -29,10 +29,19 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not player:
 		return
-
+	# REF Dialogo
+	if LevelManager.input_locked:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
 
 	var distance := position.distance_to(player.position)
-	is_active = LevelManager.frenzy_mode or distance <= activation_radius
+	
+	#is_active = LevelManager.frenzy_mode or distance <= activation_radius
+
+	var frenzy_affects_me = LevelManager.frenzy_mode and (LevelManager.frenzy_id == -1 or LevelManager.frenzy_id == id)
+	is_active = frenzy_affects_me or distance <= activation_radius
+
 	
 	if tiempo_retroceso > 0:
 		velocity = velocidad_temporal
@@ -59,12 +68,23 @@ func follow() -> void:
 	if player_is_dead or is_dying:
 		velocity = Vector2.ZERO
 		return
+		
 	velocity = position.direction_to(player.position) * speed
+
+	if abs(velocity.x) > 10:
+		animated_sprite_2d.flip_h = velocity.x > 0
 
 
 func back_to_position() -> void:
 	var target_position = initial_position
 	velocity = position.direction_to(target_position) * speed
+
+	if position.distance_to(initial_position) < 5:
+		velocity = Vector2.ZERO
+		return
+		
+	if abs(velocity.x) > 10:
+		animated_sprite_2d.flip_h = velocity.x > 0
 
 
 func ataque(player: Player) -> void:
@@ -85,6 +105,7 @@ func ataque(player: Player) -> void:
 func start_cooldown() -> void:
 	await get_tree().create_timer(cooldown_golpe).timeout
 	puede_golpear = true
+
 
 func play_anim(name: String) -> void:
 	if animated_sprite_2d.animation != name:
@@ -110,4 +131,4 @@ func destroid() -> void:
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
 	if LevelManager.enemigos_eliminados == LevelManager.enemigos_totales:
-		AudioManager.play_level()  # 🎵 vuelve música original
+		AudioManager.play_level()  #

@@ -1,16 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7spek5jwafob"]
+[gd_scene load_steps=6 format=3 uid="uid://b7spek5jwafob"]
 
 [ext_resource type="Script" uid="uid://b86aiv2u14ttd" path="res://src/scripts/objeto.gd" id="1_o2dos"]
-[ext_resource type="Texture2D" uid="uid://ck02lubyuof85" path="res://_assets/sprites/midTileset.png" id="2_7hjvn"]
+[ext_resource type="Texture2D" uid="uid://syekgkw6inbe" path="res://_assets/sprites/objetos.png" id="2_6thab"]
 [ext_resource type="AudioStream" uid="uid://dtot7nhx3rcs8" path="res://_assets/music/object_01.wav" id="3_7hjvn"]
 [ext_resource type="AudioStream" uid="uid://db3faiww8c3ha" path="res://_assets/music/grito.wav" id="4_6thab"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6thab"]
-atlas = ExtResource("2_7hjvn")
-region = Rect2(1022.83, 247.667, 65.9999, 75)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_scoyw"]
-size = Vector2(74, 79)
+size = Vector2(67, 63.75)
 
 [node name="Area2D" type="Area2D" groups=["objetos"]]
 gravity = 2000.0
@@ -19,11 +15,13 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-3.5, -5.5)
-scale = Vector2(1.64615, 1.58667)
-texture = SubResource("AtlasTexture_6thab")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_6thab")
+region_enabled = true
+region_rect = Rect2(1154.44, 776.187, 256.271, 248.369)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 0)
+position = Vector2(-8.75, -6)
 shape = SubResource("RectangleShape2D_scoyw")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

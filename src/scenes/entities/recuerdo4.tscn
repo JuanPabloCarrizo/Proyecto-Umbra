@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://lfuuj3b7tdt1"]
+
+[ext_resource type="PackedScene" uid="uid://b7spek5jwafob" path="res://src/scenes/entities/Objeto.tscn" id="1_0857s"]
+
+[node name="Area2D" instance=ExtResource("1_0857s")]
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.25, 0.25)
+region_rect = Rect2(513.848, 1014.16, 225.472, 277.008)
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-2.5, -8.875)

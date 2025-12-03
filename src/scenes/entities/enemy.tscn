@@ -1,32 +1,27 @@
 [gd_scene load_steps=10 format=3 uid="uid://j7uq3jrb7uwx"]
 
 [ext_resource type="Script" uid="uid://bk51wulhucmwa" path="res://src/scripts/entities/enemy.gd" id="1_qi3eb"]
-[ext_resource type="Texture2D" uid="uid://d4k61hmxeh1o1" path="res://_assets/sprites/idle.png" id="2_ktdi6"]
-[ext_resource type="Texture2D" uid="uid://ctbixw1qobn6o" path="res://_assets/sprites/jump.png" id="3_ktdi6"]
+[ext_resource type="Texture2D" uid="uid://cbqoaycnpx6vx" path="res://_assets/sprites/personajes.png" id="2_ktdi6"]
 [ext_resource type="AudioStream" uid="uid://blqfv6pwnsh10" path="res://_assets/music/player_hit_01.wav" id="4_2tabm"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kfuw5"]
-atlas = ExtResource("3_ktdi6")
-region = Rect2(512, 512, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2tabm"]
 atlas = ExtResource("2_ktdi6")
-region = Rect2(0, 0, 409, 512)
+region = Rect2(512, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ab5mc"]
 atlas = ExtResource("2_ktdi6")
-region = Rect2(409, 0, 409, 512)
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfuw5"]
+atlas = ExtResource("2_ktdi6")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkt1s"]
+atlas = ExtResource("2_ktdi6")
+region = Rect2(256, 0, 256, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kfuw5"]
 animations = [{
-"frames": [{
-"duration": 1.5,
-"texture": SubResource("AtlasTexture_kfuw5")
-}],
-"loop": false,
-"name": &"hit",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2tabm")
@@ -34,24 +29,35 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ab5mc")
 }],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfuw5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkt1s")
+}],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dkt1s"]
-radius = 11.0
-height = 58.0
+radius = 22.0
+height = 96.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 16
 collision_mask = 22
 script = ExtResource("1_qi3eb")
-activation_radius = 250.0
-fuerza_retroceso = 230.0
+activation_radius = 370.0
+fuerza_retroceso = 210.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_kfuw5")
 animation = &"idle"
 

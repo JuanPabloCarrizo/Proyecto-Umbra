@@ -44,7 +44,18 @@ func _on_body_entered(body: Node2D) -> void:
 			3: # Frenzy Mode ON
 				body.start_shake(60.0)
 				LevelManager.frenzy_mode = true
-				grito.play()
+				#grito.play()
+				print("id de objeto")
+				print(id)
+				if id == 1:
+					print("ID 1")
+					LevelManager.frenzy_id = 1
+				elif id == 2:
+					print("ID 2")
+					LevelManager.frenzy_id = 2
+				else:
+					print("ID otro")
+					LevelManager.frenzy_id = -1
 				frenzy_mode()
 
 			4: # Farol On/Off
@@ -114,5 +125,6 @@ func manija_on_off()-> void:
 # REF musica-de-peligro
 func frenzy_mode() -> void:
 	if LevelManager.enemigos_eliminados < LevelManager.enemigos_totales:
+		grito.play()
 		LevelManager.frenzy_mode = true
 		AudioManager.play_frenzy() 

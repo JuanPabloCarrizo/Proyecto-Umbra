@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfpuimnvwmdep"]
+
+[ext_resource type="PackedScene" uid="uid://b7spek5jwafob" path="res://src/scenes/entities/Objeto.tscn" id="1_0krdw"]
+
+[node name="Area2D" instance=ExtResource("1_0krdw")]
+tipo = 3
+id = 2
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.18, 0.18)
+region_rect = Rect2(122.39, 1032.47, 390.611, 228.527)

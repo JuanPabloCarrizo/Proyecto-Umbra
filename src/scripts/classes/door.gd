@@ -2,10 +2,7 @@ extends Area2D
 
 class_name Door
 
-
 var player: Node2D
-
-
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -18,6 +15,6 @@ func _on_body_entered(body: Node2D) -> void:
 			body.set_process(false)
 			body.set_process_input(false)
 			body.play_anim("hit")
-			await get_tree().create_timer(1).timeout
+			#await get_tree().create_timer(1).timeout
 			LevelManager.call_deferred("finalizar_juego")
 	

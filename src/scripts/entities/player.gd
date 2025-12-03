@@ -48,6 +48,13 @@ func start_shake(intensity: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	
+	# REF Dialogo
+	if LevelManager.input_locked:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+		
 	var on_floor := is_on_floor()
 	var direction := Input.get_axis("move_left", "move_right")
 	
@@ -89,7 +96,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Actualiza animación solo si no está en hit
 	if not en_hit:
-		update_animation(on_floor, direction)
+		update_animation(on_floor)
 	
 	move_and_slide()
 
@@ -115,7 +122,18 @@ func play_anim(name: String) -> void:
 		animated_sprite_2d.play(name)
 
 
-func update_animation(on_floor: bool, direction: float) -> void:
+#func update_animation(on_floor: bool, direction: float) -> void:
+	#if is_dashing:
+		#play_anim("dash")
+	#elif not on_floor:
+		#play_anim("jump")
+	#elif abs(velocity.x) > 10:
+		#play_anim("moving")
+	#else:
+		#play_anim("idle")
+
+
+func update_animation(on_floor: bool) -> void:
 	if is_dashing:
 		play_anim("dash")
 	elif not on_floor:
@@ -152,9 +170,12 @@ func recibe_daño(cantidad: int) -> void:
 	en_hit = true
 
 	start_shake(5)
+	animated_sprite_2d.modulate = Color(1,0.3,0.3,0.3)
 	sfx.stream = preload("res://_assets/music/player_hit_01.wav")
 	sfx.play()
 	play_anim("hit")
+	await get_tree().create_timer(0.2).timeout
+	animated_sprite_2d.modulate = Color(1,1,1,1)
 
 	await get_tree().create_timer(0.2).timeout
 	en_hit = false

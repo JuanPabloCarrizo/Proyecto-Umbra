@@ -6,6 +6,7 @@ var main_scene : Node2D = null
 var loaded_level : Level = null
 # Esto es para el modo Frenzy
 var frenzy_mode: bool = false
+var frenzy_id: int = -1 # -1 son todos, 1 enemigos con id 1 y 2 enemigos con id 2
 # Ref: contador-de-recuerdos
 var recuerdos_totales := 0
 var recuerdos_obtenidos := 0
@@ -17,6 +18,12 @@ var tipo_final: String = ""
 # REF musica-de-peligro
 var enemigos_totales := 0
 var enemigos_eliminados := 0
+var enemigos_por_id = {}
+var eliminados_por_id = {}
+# REF para dialogo
+# Agrego para que el player no pueda moverse mientras haya dialogos
+# Puede usarse para door?
+static var input_locked: bool = false
 
 
 
@@ -122,9 +129,7 @@ func contar_enemigos() -> void:
 	
 	for e in get_tree().get_nodes_in_group("enemies"):
 		print(e.id)
-		if e.id == 1:
-			enemigos_totales += 1
-	
+		enemigos_totales += 1	
 	print("Enemigos totales en mapa: ", enemigos_totales)
 	
 
