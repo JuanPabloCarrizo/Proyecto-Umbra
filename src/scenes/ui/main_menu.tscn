@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bddfx6yhe5edt" path="res://src/scripts/ui/main_menu.gd" id="1_loxbe"]
 [ext_resource type="Texture2D" uid="uid://dtodl73l81qnt" path="res://_assets/img/presentacion.png" id="2_ttmq8"]
+[ext_resource type="FontFile" uid="uid://dqixywmlkywhx" path="res://_assets/fonts/Flavors-Regular.ttf" id="3_f5lm1"]
 [ext_resource type="AudioStream" uid="uid://grd3gktbg380" path="res://_assets/music/menu_click_01.wav" id="4_f5lm1"]
 
 [sub_resource type="SystemFont" id="SystemFont_f5lm1"]
@@ -15,12 +16,6 @@ font = SubResource("SystemFont_f5lm1")
 font_size = 50
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="SystemFont" id="SystemFont_ttmq8"]
-font_names = PackedStringArray("Century Gothic")
-font_weight = 300
-subpixel_positioning = 0
-oversampling = 2.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_f5lm1"]
 font = SubResource("SystemFont_f5lm1")
@@ -76,7 +71,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_fonts/font = SubResource("SystemFont_ttmq8")
+theme_override_fonts/font = ExtResource("3_f5lm1")
 theme_override_font_sizes/font_size = 32
 text = "START"
 
@@ -84,7 +79,7 @@ text = "START"
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_fonts/font = SubResource("SystemFont_ttmq8")
+theme_override_fonts/font = ExtResource("3_f5lm1")
 theme_override_font_sizes/font_size = 32
 text = "QUIT"
 

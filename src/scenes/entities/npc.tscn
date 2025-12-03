@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfv5guygmvdhu"]
+[gd_scene load_steps=9 format=3 uid="uid://bfv5guygmvdhu"]
 
 [ext_resource type="Texture2D" uid="uid://cbqoaycnpx6vx" path="res://_assets/sprites/personajes.png" id="1_arw11"]
 [ext_resource type="Script" uid="uid://uykuy1l5wffj" path="res://src/scripts/entities/npc.gd" id="1_khicf"]
 [ext_resource type="Texture2D" uid="uid://b2gt2d4i7vgdo" path="res://_assets/sprites/chat.png" id="2_khicf"]
+[ext_resource type="FontFile" uid="uid://dqixywmlkywhx" path="res://_assets/fonts/Flavors-Regular.ttf" id="4_jna7a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jna7a"]
 size = Vector2(140, 184)
@@ -58,7 +59,8 @@ offset_right = 135.0
 offset_bottom = 51.0
 theme = SubResource("Theme_jna7a")
 theme_override_colors/font_color = Color(0.717827, 0.205527, 0.0838212, 0.266667)
-text = "<E>
+theme_override_fonts/font = ExtResource("4_jna7a")
+text = "< E >
  interactuar"
 label_settings = SubResource("LabelSettings_uhmjt")
 horizontal_alignment = 1

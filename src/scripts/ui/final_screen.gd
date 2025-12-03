@@ -5,7 +5,7 @@ class_name FinalScreen
 @export var img_final_medio: Texture2D
 @export var img_final_bueno: Texture2D
 @onready var fondo: TextureRect = $TextureRect
-@onready var texto: Label = $TextureRect/Texto
+@onready var texto: Label = $TextureRect/MarginContainer/PanelContainer/Texto
 @onready var sfx: AudioStreamPlayer2D = $sfx
 @onready var menu_buttons = $TextureRect/MarginContainer/VBoxContainer.get_children()
 
@@ -14,6 +14,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	sfx.process_mode = Node.PROCESS_MODE_ALWAYS
+	
 
 	var tipo_final = LevelManager.tipo_final
 	mostrar_final(tipo_final)
@@ -21,6 +22,7 @@ func _ready() -> void:
 	# Hover de los botones
 	for b in menu_buttons:
 		if b is Button:
+			b.process_mode = Node.PROCESS_MODE_ALWAYS
 			b.mouse_entered.connect(_sfx_hover_button)
 
 func mostrar_final(tipo: String) -> void:
@@ -28,12 +30,12 @@ func mostrar_final(tipo: String) -> void:
 
 	match tipo:
 		"player_muere", "final_malo":
-			texto.text = "Tu alma está perdida.\nLa oscuridad reclama tu esencia. La penumbra se alimenta una vez mas."
+			texto.text = "Tu alma está perdida.\nLa oscuridad reclama tu esencia. La penumbra se alimenta una vez mas. "
 			fondo.texture = img_final_malo
 			AudioManager.play_ending_bad()
 
 		"final_intermedio":
-			texto.text = "Un destino incierto.\nAún no sabes quién eres. Tus recuerdos no son suficientes y el ciclo quizás se repita eternamente."
+			texto.text = "Un destino incierto...\nAún no sabes quién eres.\nTus recuerdos no son suficientes y el ciclo quizás se repita eternamente."
 			fondo.texture = img_final_medio
 			AudioManager.play_ending_mid()
 
