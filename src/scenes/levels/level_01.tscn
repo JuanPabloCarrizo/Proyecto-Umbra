@@ -1791,7 +1791,6 @@ position = Vector2(3047, 28)
 tipo = 1
 
 [node name="Frenzy 2" parent="Objetos" instance=ExtResource("15_lyywh")]
-visible = false
 position = Vector2(1609, 766)
 
 [node name="Enemies" type="Node2D" parent="."]

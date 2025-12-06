@@ -130,5 +130,6 @@ func destroid() -> void:
 	sfx.play()
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
+	# Ver aca que hay q controlar además si los enemigos tienen ID 1 o 2 o ambos
 	if LevelManager.enemigos_eliminados == LevelManager.enemigos_totales:
 		AudioManager.play_level()  #

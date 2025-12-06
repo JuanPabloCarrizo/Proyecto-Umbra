@@ -126,10 +126,18 @@ func cargar_final(tipo: String):
 #REF musica-de-peligro
 func contar_enemigos() -> void:
 	enemigos_totales = 0
+	var enemigos_tipo1 = 0
+	var enemigos_tipo2 = 0
 	
 	for e in get_tree().get_nodes_in_group("enemies"):
 		print(e.id)
-		enemigos_totales += 1	
+		enemigos_totales += 1
+		if e.id == 1:
+			enemigos_tipo1 += 1
+		elif e.id == 2:
+			enemigos_tipo2 += 1
+	print("enemigos 1: ", enemigos_tipo1)
+	print("enemigos 2: ", enemigos_tipo2)
 	print("Enemigos totales en mapa: ", enemigos_totales)
 	
 
