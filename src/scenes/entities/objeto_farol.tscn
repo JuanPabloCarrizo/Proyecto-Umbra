@@ -1,9 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bk5c5t38sgu56"]
+[gd_scene load_steps=7 format=3 uid="uid://bk5c5t38sgu56"]
 
 [ext_resource type="PackedScene" uid="uid://b7spek5jwafob" path="res://src/scenes/entities/Objeto.tscn" id="1_mdgun"]
-[ext_resource type="Texture2D" uid="uid://cf6veo70imj18" path="res://_assets/sprites/farol_off.png" id="2_yf0fu"]
-[ext_resource type="Texture2D" uid="uid://bu4l3ye1ksmvs" path="res://_assets/sprites/farol_on.png" id="3_iuqxl"]
+[ext_resource type="Texture2D" uid="uid://byalphymsje1d" path="res://_assets/sprites/objetos.png" id="2_mdgun"]
 [ext_resource type="Texture2D" uid="uid://cppe20qmv4vps" path="res://_assets/img/light_texture.png" id="4_yf0fu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf0fu"]
+atlas = ExtResource("2_mdgun")
+region = Rect2(526.373, 117.919, 198.095, 269.572)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuqxl"]
+atlas = ExtResource("2_mdgun")
+region = Rect2(293.394, 114.509, 190.259, 271.579)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mdgun"]
 radius = 151.03
@@ -11,13 +18,14 @@ radius = 151.03
 [node name="Area2D" instance=ExtResource("1_mdgun")]
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_yf0fu")
+texture = SubResource("AtlasTexture_yf0fu")
+region_rect = Rect2(519.875, 118.5, 209.524, 274.5)
 
 [node name="farol_on" type="Sprite2D" parent="." index="1"]
 visible = false
 position = Vector2(-3.5, -5.5)
 scale = Vector2(1.64615, 1.58667)
-texture = ExtResource("3_iuqxl")
+texture = SubResource("AtlasTexture_iuqxl")
 
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(-4, 4.5)
