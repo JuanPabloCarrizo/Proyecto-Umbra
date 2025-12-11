@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://dqixywmlkywhx" path="res://_assets/fonts/Flavors-Regular.ttf" id="4_jna7a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jna7a"]
-size = Vector2(140, 184)
+size = Vector2(76, 100)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khicf"]
 bg_color = Color(0, 0, 0, 0.270588)
@@ -27,13 +27,14 @@ corner_radius_bottom_left = 2
 script = ExtResource("1_khicf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+position = Vector2(-36.2287, 7.04876)
+scale = Vector2(0.0988705, 0.101527)
 texture = ExtResource("1_arw11")
 region_enabled = true
-region_rect = Rect2(72.3302, 260.441, 134.74, 251.473)
+region_rect = Rect2(261.078, 1043.74, 582.037, 984.328)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-52, -38)
+position = Vector2(-38, 5)
 shape = SubResource("RectangleShape2D_jna7a")
 
 [node name="Dialog" type="Sprite2D" parent="."]
