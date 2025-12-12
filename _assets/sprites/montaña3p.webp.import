@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c36yn4kqalmfv"
-path="res://.godot/imported/chat.png-7551cd6a29495668201b3832655a4f4f.ctex"
+uid="uid://dges50iroq8nv"
+path="res://.godot/imported/montaña3p.webp-7964705bdfd86ab30fb18fe2f498753b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_assets/sprites/chat.png"
-dest_files=["res://.godot/imported/chat.png-7551cd6a29495668201b3832655a4f4f.ctex"]
+source_file="res://_assets/sprites/montaña3p.webp"
+dest_files=["res://.godot/imported/montaña3p.webp-7964705bdfd86ab30fb18fe2f498753b.ctex"]
 
 [params]
 

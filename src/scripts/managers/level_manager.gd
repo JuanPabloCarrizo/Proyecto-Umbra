@@ -35,6 +35,12 @@ func unload_level() -> void:
 
 func load_level(level_id : int) -> void:
 	print("LevelManager.load_level() llamado con id:", level_id)
+	
+	# Parche de emergencia para forzar la carga de la escena principal:
+	if level_id == 1:
+		get_tree().change_scene_to_file("res://src/scenes/levels/level_01.tscn")
+		return
+
 	unload_level()
 	
 	var level_data = get_level_by_id(level_id)
@@ -145,4 +151,3 @@ func contar_enemigos() -> void:
 func add_eliminated_enemy():
 	enemigos_eliminados += 1
 	print("Eliminado:", enemigos_eliminados, "/", enemigos_totales)
-	

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ddd61d533835"]
 
 [ext_resource type="Script" uid="uid://bddfx6yhe5edt" path="res://src/scripts/ui/main_menu.gd" id="1_loxbe"]
-[ext_resource type="Texture2D" uid="uid://dtodl73l81qnt" path="res://_assets/img/presentacion.png" id="2_ttmq8"]
+[ext_resource type="Texture2D" uid="uid://doyuxcyqddvtd" path="res://_assets/img/menu.webp" id="2_f5lm1"]
 [ext_resource type="FontFile" uid="uid://dqixywmlkywhx" path="res://_assets/fonts/Flavors-Regular.ttf" id="3_f5lm1"]
 [ext_resource type="AudioStream" uid="uid://grd3gktbg380" path="res://_assets/music/menu_click_01.wav" id="4_f5lm1"]
 
@@ -39,7 +39,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_ttmq8")
+texture = ExtResource("2_f5lm1")
 expand_mode = 2
 stretch_mode = 6
 

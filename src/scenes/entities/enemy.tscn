@@ -1,47 +1,28 @@
-[gd_scene load_steps=10 format=3 uid="uid://j7uq3jrb7uwx"]
+[gd_scene load_steps=8 format=3 uid="uid://j7uq3jrb7uwx"]
 
 [ext_resource type="Script" uid="uid://bk51wulhucmwa" path="res://src/scripts/entities/enemy.gd" id="1_qi3eb"]
-[ext_resource type="Texture2D" uid="uid://cbqoaycnpx6vx" path="res://_assets/sprites/personajes.png" id="2_ktdi6"]
+[ext_resource type="Texture2D" uid="uid://cog04r55n4jb7" path="res://_assets/sprites/personajes.webp" id="2_ktdi6"]
 [ext_resource type="AudioStream" uid="uid://blqfv6pwnsh10" path="res://_assets/music/player_hit_01.wav" id="4_2tabm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktdi6"]
+atlas = ExtResource("2_ktdi6")
+region = Rect2(0, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2tabm"]
 atlas = ExtResource("2_ktdi6")
-region = Rect2(512, 0, 256, 256)
+region = Rect2(512, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ab5mc"]
-atlas = ExtResource("2_ktdi6")
-region = Rect2(768, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kfuw5"]
-atlas = ExtResource("2_ktdi6")
-region = Rect2(0, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dkt1s"]
-atlas = ExtResource("2_ktdi6")
-region = Rect2(256, 0, 256, 256)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_kfuw5"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ab5mc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ktdi6")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2tabm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ab5mc")
-}],
-"loop": false,
-"name": &"hit",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kfuw5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dkt1s")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"default",
 "speed": 5.0
 }]
 
@@ -57,9 +38,9 @@ activation_radius = 370.0
 fuerza_retroceso = 210.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
-sprite_frames = SubResource("SpriteFrames_kfuw5")
-animation = &"idle"
+position = Vector2(5.00001, -2)
+scale = Vector2(0.203125, 0.203125)
+sprite_frames = SubResource("SpriteFrames_ab5mc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_dkt1s")
