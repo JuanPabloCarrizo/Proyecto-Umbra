@@ -1,19 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://bx3jmpqjxw4s4"]
+[gd_scene load_steps=4 format=3 uid="uid://bx3jmpqjxw4s4"]
 
 [ext_resource type="PackedScene" uid="uid://b7spek5jwafob" path="res://src/scenes/entities/Objeto.tscn" id="1_ovhoo"]
-[ext_resource type="Texture2D" uid="uid://syekgkw6inbe" path="res://_assets/sprites/objetos.png" id="2_ovhoo"]
+[ext_resource type="Texture2D" uid="uid://cwfi5xfc8j1w1" path="res://_assets/sprites/objetos.webp" id="2_ovhoo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ut6of"]
+atlas = ExtResource("2_ovhoo")
+region = Rect2(383.774, 65.3058, 70.0768, 56.1485)
 
 [node name="Area2D" instance=ExtResource("1_ovhoo")]
 tipo = 2
 
 [node name="Sprite2D" parent="." index="0"]
-scale = Vector2(1, 1)
-texture = ExtResource("2_ovhoo")
-region_enabled = true
+position = Vector2(-4.895, -3.5)
+scale = Vector2(1.08929, 1.08929)
+texture = SubResource("AtlasTexture_ut6of")
+region_enabled = false
 region_rect = Rect2(765.455, 130.818, 141.2, 109.051)
 
 [node name="CollisionShape2D" parent="." index="1"]
-visible = false
 position = Vector2(-6, -4.5)
 
 [node name="AudioStreamPlayer2D" parent="." index="2"]

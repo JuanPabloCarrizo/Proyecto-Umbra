@@ -1,11 +1,11 @@
 [gd_scene load_steps=28 format=4 uid="uid://6jb2tefed01e"]
 
 [ext_resource type="Script" uid="uid://jnbderwogf6b" path="res://src/scripts/classes/level.gd" id="1_dj3tn"]
-[ext_resource type="Texture2D" uid="uid://ehxxolxbk1rc" path="res://_assets/sprites/Fondo.png" id="2_xj2cy"]
-[ext_resource type="Texture2D" uid="uid://ck02lubyuof85" path="res://_assets/sprites/midTileset.png" id="3_tf4uo"]
+[ext_resource type="Texture2D" uid="uid://mtsln7k0y8nk" path="res://_assets/sprites/fondo.webp" id="2_xj2cy"]
+[ext_resource type="Texture2D" uid="uid://chaw6ywn6tqpc" path="res://_assets/sprites/terreno.webp" id="3_tf4uo"]
 [ext_resource type="PackedScene" uid="uid://bfv5guygmvdhu" path="res://src/scenes/entities/npc.tscn" id="4_nqug1"]
 [ext_resource type="Script" uid="uid://bstg8ofqtcomk" path="res://src/scripts/classes/door.gd" id="5_lkqm6"]
-[ext_resource type="Texture2D" uid="uid://syekgkw6inbe" path="res://_assets/sprites/objetos.png" id="6_wik14"]
+[ext_resource type="Texture2D" uid="uid://cay28soev5jmj" path="res://_assets/sprites/objetos.webp" id="6_wik14"]
 [ext_resource type="PackedScene" uid="uid://cmeplvg6yvaib" path="res://src/scenes/entities/player.tscn" id="7_x2e48"]
 [ext_resource type="AudioStream" uid="uid://b11g2w1x04ek4" path="res://_assets/music/ambient_03.ogg" id="8_4a7rg"]
 [ext_resource type="PackedScene" uid="uid://b7spek5jwafob" path="res://src/scenes/entities/Objeto.tscn" id="9_mdy2u"]
@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cfpuimnvwmdep" path="res://src/scenes/entities/recuerdo5.tscn" id="15_l73c8"]
 [ext_resource type="PackedScene" uid="uid://j7uq3jrb7uwx" path="res://src/scenes/entities/enemy.tscn" id="16_cohcx"]
 [ext_resource type="Script" uid="uid://db4eo0khihxhq" path="res://src/scripts/ui/ui_escencia.gd" id="17_hnqc7"]
-[ext_resource type="Texture2D" uid="uid://dseyi7cex1p51" path="res://_assets/sprites/life.PNG" id="18_7e7af"]
+[ext_resource type="Texture2D" path="res://_assets/sprites/life.PNG" id="18_7e7af"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lo748"]
 texture = ExtResource("2_xj2cy")

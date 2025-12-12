@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c36yn4kqalmfv"
-path="res://.godot/imported/chat.png-7551cd6a29495668201b3832655a4f4f.ctex"
+uid="uid://cog04r55n4jb7"
+path="res://.godot/imported/personajes.webp-2fd0b42264c4874abd5101f9c6f87efd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_assets/sprites/chat.png"
-dest_files=["res://.godot/imported/chat.png-7551cd6a29495668201b3832655a4f4f.ctex"]
+source_file="res://_assets/sprites/personajes.webp"
+dest_files=["res://.godot/imported/personajes.webp-2fd0b42264c4874abd5101f9c6f87efd.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c36yn4kqalmfv"
-path="res://.godot/imported/chat.png-7551cd6a29495668201b3832655a4f4f.ctex"
+uid="uid://ynx2swi12du2"
+path="res://.godot/imported/terreno.webp-b57c44a9b6a50371b22db94b1e9b9e59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_assets/sprites/chat.png"
-dest_files=["res://.godot/imported/chat.png-7551cd6a29495668201b3832655a4f4f.ctex"]
+source_file="res://_assets/sprites/terreno.webp"
+dest_files=["res://.godot/imported/terreno.webp-b57c44a9b6a50371b22db94b1e9b9e59.ctex"]
 
 [params]
 

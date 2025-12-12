@@ -15,9 +15,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dmslk")
-img_final_malo = ExtResource("2_6bokh")
-img_final_medio = ExtResource("2_ptekf")
-img_final_bueno = ExtResource("4_cdrne")
+img_final_malo = ExtResource("4_cdrne")
+img_final_medio = ExtResource("2_6bokh")
+img_final_bueno = ExtResource("2_ptekf")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -40,10 +40,13 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_vertical = 0
+alignment = 1
 
 [node name="Label" type="Label" parent="TextureRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="PlayButton" type="Button" parent="TextureRect/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(256, 0)
@@ -53,7 +56,6 @@ theme_override_font_sizes/font_size = 32
 text = "CONTINUAR"
 
 [node name="QuitButton" type="Button" parent="TextureRect/MarginContainer/VBoxContainer"]
-visible = false
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_cdrne")
@@ -73,11 +75,13 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="TextureRect/MarginContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Texto" type="Label" parent="TextureRect/MarginContainer/PanelContainer"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_cdrne")
 theme_override_font_sizes/font_size = 35
