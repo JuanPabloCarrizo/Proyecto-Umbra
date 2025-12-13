@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://bfv5guygmvdhu"]
 
 [ext_resource type="Script" uid="uid://uykuy1l5wffj" path="res://src/scripts/entities/npc.gd" id="1_khicf"]
-[ext_resource type="Texture2D" uid="uid://clrdqvgvexlyf" path="res://_assets/sprites/personajes.webp" id="2_jna7a"]
-[ext_resource type="Texture2D" uid="uid://bkka5sywgt85b" path="res://_assets/sprites/chat.png" id="3_uhmjt"]
+[ext_resource type="Texture2D" uid="uid://cog04r55n4jb7" path="res://_assets/sprites/personajes.webp" id="2_jna7a"]
+[ext_resource type="Texture2D" uid="uid://c36yn4kqalmfv" path="res://_assets/sprites/chat.png" id="3_uhmjt"]
 [ext_resource type="FontFile" uid="uid://dqixywmlkywhx" path="res://_assets/fonts/Flavors-Regular.ttf" id="4_jna7a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jna7a"]
-size = Vector2(76, 95)
+size = Vector2(142, 95)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khicf"]
 bg_color = Color(0, 0, 0, 0.270588)
@@ -34,23 +34,23 @@ region_enabled = true
 region_rect = Rect2(139.719, 520.03, 286.13, 500.921)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-38, 2.5)
+position = Vector2(-54.5, 2.5)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_jna7a")
 
 [node name="Dialog" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.666667)
-position = Vector2(7, -81)
-scale = Vector2(1.27083, 1.29167)
+position = Vector2(-18, -34)
+scale = Vector2(0.843748, 0.857585)
 texture = ExtResource("3_uhmjt")
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
-offset_left = 38.0
-offset_top = -55.0
-offset_right = 176.0
-offset_bottom = -1.0
+offset_left = -139.0
+offset_top = -110.0
+offset_right = -1.0
+offset_bottom = -56.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_khicf")
 
 [node name="Label" type="Label" parent="Panel"]

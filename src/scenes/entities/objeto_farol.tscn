@@ -48,8 +48,8 @@ shape = SubResource("CircleShape2D_mdgun")
 visible = false
 position = Vector2(2.21414, 1.66766)
 scale = Vector2(0.933598, 0.945317)
-color = Color(0.897158, 0.959018, 0.190419, 1)
-energy = 2.66
+color = Color(0.920666, 0.832619, 0.308924, 1)
+energy = 8.09
 texture = ExtResource("4_yf0fu")
 texture_scale = 2.7
 

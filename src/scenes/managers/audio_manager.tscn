@@ -18,5 +18,7 @@ ending_mid = ExtResource("6_pllqt")
 ending_good = ExtResource("7_vnbxm")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wj122")
 
 [node name="MusicFrenzy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wj122")

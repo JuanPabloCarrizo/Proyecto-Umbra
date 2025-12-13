@@ -32,8 +32,10 @@ func _on_play_button_pressed() -> void:
 	sfx.play()
 	music.stop()
 	AudioManager.play_level()
-	
-	get_tree().change_scene_to_file("res://src/scenes/levels/level_01.tscn")
+	print("MAIN_MENU: _on_play_button_pressed")
+	#get_tree().change_scene_to_file("res://src/scenes/levels/level_01.tscn")
+	LevelManager.load_level(1)
+
 	
 	deactivate()
 

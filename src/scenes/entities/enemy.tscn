@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://j7uq3jrb7uwx"]
+[gd_scene load_steps=10 format=3 uid="uid://j7uq3jrb7uwx"]
 
 [ext_resource type="Script" uid="uid://bk51wulhucmwa" path="res://src/scripts/entities/enemy.gd" id="1_qi3eb"]
 [ext_resource type="Texture2D" uid="uid://cog04r55n4jb7" path="res://_assets/sprites/personajes.webp" id="2_ktdi6"]
@@ -12,6 +12,14 @@ region = Rect2(0, 0, 512, 512)
 atlas = ExtResource("2_ktdi6")
 region = Rect2(512, 0, 512, 512)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ab5mc"]
+atlas = ExtResource("2_ktdi6")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfuw5"]
+atlas = ExtResource("2_ktdi6")
+region = Rect2(1536, 0, 512, 512)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ab5mc"]
 animations = [{
 "frames": [{
@@ -23,6 +31,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ab5mc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfuw5")
+}],
+"loop": true,
+"name": &"hit",
 "speed": 5.0
 }]
 

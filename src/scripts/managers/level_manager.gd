@@ -36,10 +36,10 @@ func unload_level() -> void:
 func load_level(level_id : int) -> void:
 	print("LevelManager.load_level() llamado con id:", level_id)
 	
-	# Parche de emergencia para forzar la carga de la escena principal:
-	if level_id == 1:
-		get_tree().change_scene_to_file("res://src/scenes/levels/level_01.tscn")
-		return
+	## Parche de emergencia para forzar la carga de la escena principal:
+	#if level_id == 1:
+		#get_tree().change_scene_to_file("res://src/scenes/levels/level_01.tscn")
+		#return
 
 	unload_level()
 	
@@ -102,7 +102,7 @@ func contar_recuerdos() -> void:
 	recuerdos_totales = 0
 	
 	for o in get_tree().get_nodes_in_group("objetos"):
-		print(o.tipo)
+		#print(o.tipo)
 		if o.tipo == 1:
 			recuerdos_totales += 1
 	
@@ -131,23 +131,74 @@ func cargar_final(tipo: String):
 
 #REF musica-de-peligro
 func contar_enemigos() -> void:
+	#enemigos_totales = 0
+	#var enemigos_tipo1 = 0
+	#var enemigos_tipo2 = 0
+	#
+	#for e in get_tree().get_nodes_in_group("enemies"):
+		##print(e.id)
+		#enemigos_totales += 1
+		#if e.id == 1:
+			#enemigos_tipo1 += 1
+		#elif e.id == 2:
+			#enemigos_tipo2 += 1
+	#print("enemigos 1: ", enemigos_tipo1)
+	#print("enemigos 2: ", enemigos_tipo2)
+	#print("Enemigos totales en mapa: ", enemigos_totales)
 	enemigos_totales = 0
-	var enemigos_tipo1 = 0
-	var enemigos_tipo2 = 0
+	enemigos_por_id.clear()
+	eliminados_por_id.clear()	
 	
 	for e in get_tree().get_nodes_in_group("enemies"):
-		print(e.id)
 		enemigos_totales += 1
-		if e.id == 1:
-			enemigos_tipo1 += 1
-		elif e.id == 2:
-			enemigos_tipo2 += 1
-	print("enemigos 1: ", enemigos_tipo1)
-	print("enemigos 2: ", enemigos_tipo2)
-	print("Enemigos totales en mapa: ", enemigos_totales)
+		
+		if not enemigos_por_id.has(e.id):
+			enemigos_por_id[e.id] = 0
+			eliminados_por_id[e.id] = 0
+		
+		enemigos_por_id[e.id] += 1
 	
+	print("ENEMIGOS POR ID: ", enemigos_por_id)
+	print("ENEMIGOS TOTALES: ", enemigos_totales)
 
 #REF musica-de-peligro
-func add_eliminated_enemy():
+#func add_eliminated_enemy():
+	#enemigos_eliminados += 1
+	#print("Eliminado:", enemigos_eliminados, "/", enemigos_totales)
+func add_eliminated_enemy(enemy_id: int) -> void:
 	enemigos_eliminados += 1
-	print("Eliminado:", enemigos_eliminados, "/", enemigos_totales)
+
+	if eliminados_por_id.has(enemy_id):
+		eliminados_por_id[enemy_id] += 1
+
+	print("Eliminados por ID:", eliminados_por_id)
+
+	# Si estamos en frenzy y ya no quedan enemigos del ID activo
+	if frenzy_mode and frenzy_id != -1:
+		if eliminados_por_id[frenzy_id] >= enemigos_por_id[frenzy_id]:
+			print("Frenzy terminado para ID", frenzy_id)
+			frenzy_mode = false
+			frenzy_id = -1
+			AudioManager.play_level()
+
+	_check_frenzy_end()
+
+func _check_frenzy_end() -> void:
+	if not frenzy_mode:
+		return
+
+	# Frenzy global
+	if frenzy_id == -1:
+		if enemigos_eliminados >= enemigos_totales:
+			_end_frenzy()
+		return
+
+	# Frenzy por ID
+	if eliminados_por_id.get(frenzy_id, 0) >= enemigos_por_id.get(frenzy_id, 0):
+		_end_frenzy()
+
+func _end_frenzy() -> void:
+	print("FIN DE FRENZY")
+	frenzy_mode = false
+	frenzy_id = -1
+	AudioManager.play_level()

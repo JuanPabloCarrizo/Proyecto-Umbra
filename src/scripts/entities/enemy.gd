@@ -115,7 +115,7 @@ func play_anim(name: String) -> void:
 func _on_player_dead():
 	player_is_dead = true
 	velocity = Vector2.ZERO
-	play_anim("idle")
+	play_anim("default")
 
 		
 func destroid() -> void:
@@ -124,12 +124,12 @@ func destroid() -> void:
 
 	# REF: musica-de-peligro
 	player.start_shake(10)
-	LevelManager.add_eliminated_enemy() 
+	LevelManager.add_eliminated_enemy(id) 
 	is_dying = true
 	play_anim("hit")
 	sfx.play()
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
 	# Ver aca que hay q controlar además si los enemigos tienen ID 1 o 2 o ambos
-	if LevelManager.enemigos_eliminados == LevelManager.enemigos_totales:
-		AudioManager.play_level()  #
+	#if LevelManager.enemigos_eliminados == LevelManager.enemigos_totales:
+		#AudioManager.play_level()  #
